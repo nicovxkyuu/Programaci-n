@@ -1,0 +1,9 @@
+Algoritmo Salario_Por_Hora
+	Definir Horas, Tarifa, Resultado Como Entero;	
+	Escribir "ingresa las horas trabajadas";
+	leer Horas;
+	Escribir "ingresa la tarifa";
+	leer Tarifa
+	resultado <- horas * Tarifa
+	Escribir "Tu salario por hora es:", resultado;
+FinAlgoritmo
