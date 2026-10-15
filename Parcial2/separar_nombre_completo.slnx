@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="separar_nombre_completo/separar_nombre_completo.vcxproj" />
+</Solution>

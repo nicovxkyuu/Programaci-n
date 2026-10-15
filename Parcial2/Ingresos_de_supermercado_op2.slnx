@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Ingresos_de_supermercado_op2/Ingresos_de_supermercado_op2.vcxproj" />
+</Solution>

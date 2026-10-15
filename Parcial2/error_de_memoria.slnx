@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="error_de_memoria/error_de_memoria.vcxproj" Id="355a299f-6cd0-4214-ac48-400e5d5fa7a3" />
+</Solution>
