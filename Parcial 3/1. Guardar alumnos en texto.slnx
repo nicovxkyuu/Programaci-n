@@ -1,7 +1,59 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="1. Guardar alumnos en texto/1. Guardar alumnos en texto.vcxproj" />
-</Solution>
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+struct Alumno {
+    string nombre;
+    string matricula;
+    float calif[3];
+    int grupo;
+};
+
+int main() {
+    Alumno alumnos[3];
+
+    // Capturar alumnos
+    for (int i = 0; i < 3; i++) {
+        cout << "\nAlumno " << i + 1 << endl;
+
+        cout << "Nombre: ";
+        getline(cin, alumnos[i].nombre);
+
+        cout << "Matricula: ";
+        getline(cin, alumnos[i].matricula);
+
+        for (int j = 0; j < 3; j++) {
+            cout << "Calificacion " << j + 1 << ": ";
+            cin >> alumnos[i].calif[j];
+        }
+
+        cout << "Grupo: ";
+        cin >> alumnos[i].grupo;
+
+        cin.ignore(1000, '\n');
+    }
+
+    // Guardar alumnos en archivo de texto
+    ofstream archivo("alumnos.txt");
+
+    if (archivo.is_open()) {
+        for (int i = 0; i < 3; i++) {
+            archivo << alumnos[i].nombre << " "
+                << alumnos[i].matricula << " "
+                << alumnos[i].calif[0] << " "
+                << alumnos[i].calif[1] << " "
+                << alumnos[i].calif[2] << " "
+                << alumnos[i].grupo << endl;
+        }
+
+        archivo.close();
+        cout << "\nAlumnos guardados correctamente.";
+    }
+    else {
+        cout << "\nError al crear el archivo.";
+    }
+
+    return 0;
+}
