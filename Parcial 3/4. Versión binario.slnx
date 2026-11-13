@@ -1,7 +1,68 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="4. Versión binario/4. Versión binario.vcxproj" />
-</Solution>
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+struct Alumno {
+    string nombre, matricula;
+    float calif[3];
+    int grupo;
+};
+
+int main() {
+    Alumno a[3];
+
+    for (int i = 0; i < 3; i++) {
+        cout << "Nombre: ";
+        getline(cin, a[i].nombre);
+
+        cout << "Matricula: ";
+        getline(cin, a[i].matricula);
+
+        for (int j = 0; j < 3; j++) {
+            cout << "Calificacion: ";
+            cin >> a[i].calif[j];
+        }
+
+        cout << "Grupo: ";
+        cin >> a[i].grupo;
+        cin.ignore(1000, '\n');
+    }
+
+    ofstream bin("alumnos.dat", ios::binary);
+
+    if (!bin) {
+        cout << "Error al crear archivo.";
+        return 0;
+    }
+
+    for (int i = 0; i < 3; i++) {
+        unsigned int tam = a[i].nombre.size();
+        bin.write((char*)&tam, sizeof(tam));
+        bin.write(a[i].nombre.c_str(), tam);
+
+        tam = a[i].matricula.size();
+        bin.write((char*)&tam, sizeof(tam));
+        bin.write(a[i].matricula.c_str(), tam);
+
+        bin.write((char*)a[i].calif, sizeof(a[i].calif));
+        bin.write((char*)&a[i].grupo, sizeof(a[i].grupo));
+    }
+
+    bin.close();
+
+    ifstream texto("alumnos.txt", ios::binary | ios::ate);
+    ifstream archivo("alumnos.dat", ios::binary | ios::ate);
+
+    if (texto && archivo) {
+        cout << "\nArchivo de texto: "
+            << texto.tellg() << " bytes";
+        cout << "\nArchivo binario: "
+            << archivo.tellg() << " bytes";
+    }
+    else {
+        cout << "\nNo se pudieron comparar los archivos.";
+    }
+
+    return 0;
+}
