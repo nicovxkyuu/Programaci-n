@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -40,19 +39,19 @@ int main() {
 
     if (archivo.is_open()) {
         for (int i = 0; i < 3; i++) {
-            archivo << alumnos[i].nombre << " "
-                << alumnos[i].matricula << " "
-                << alumnos[i].calif[0] << " "
-                << alumnos[i].calif[1] << " "
-                << alumnos[i].calif[2] << " "
+            archivo << alumnos[i].nombre << "|"
+                << alumnos[i].matricula << "|"
+                << alumnos[i].calif[0] << "|"
+                << alumnos[i].calif[1] << "|"
+                << alumnos[i].calif[2] << "|"
                 << alumnos[i].grupo << endl;
         }
 
         archivo.close();
-        cout << "\nAlumnos guardados correctamente.";
+        cout << "\nAlumnos guardados correctamente.\n";
     }
     else {
-        cout << "\nError al crear el archivo.";
+        cout << "\nError al crear el archivo.\n";
     }
 
     return 0;
