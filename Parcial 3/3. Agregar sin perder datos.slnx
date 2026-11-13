@@ -1,7 +1,48 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="3. Agregar sin perder datos/3. Agregar sin perder datos.vcxproj" />
-</Solution>
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+struct Alumno {
+    string nombre, matricula;
+    float calif[3];
+    int grupo;
+};
+
+int main() {
+    Alumno a;
+
+    cout << "Nombre: ";
+    getline(cin, a.nombre);
+
+    cout << "Matricula: ";
+    getline(cin, a.matricula);
+
+    for (int i = 0; i < 3; i++) {
+        cout << "Calificacion: ";
+        cin >> a.calif[i];
+    }
+
+    cout << "Grupo: ";
+    cin >> a.grupo;
+
+    ofstream archivo("alumnos.txt", ios::app);
+
+    if (!archivo) {
+        cout << "Error al abrir archivo.";
+        return 0;
+    }
+
+    archivo << a.nombre << "|"
+        << a.matricula << "|"
+        << a.calif[0] << "|"
+        << a.calif[1] << "|"
+        << a.calif[2] << "|"
+        << a.grupo << endl;
+
+    archivo.close();
+
+    cout << "Nuevo alumno agregado.";
+
+    return 0;
+}
