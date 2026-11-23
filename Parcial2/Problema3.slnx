@@ -1,7 +1,46 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="Problema3/Problema3.vcxproj" Id="93da9fe5-5e38-4b02-b61c-776f1cbfb862" />
-</Solution>
+#include <iostream>
+using namespace std;
+
+// Funcion para ordenar dos numeros
+void OrdenarDosNumeros(int& a, int& b) {
+
+    if (a > b) {
+        int temporal = a;
+        a = b;
+        b = temporal;
+    }
+}
+
+int main() {
+
+    int num1, num2;
+
+    // Primera prueba
+    cout << "Ingresa dos numeros: ";
+    cin >> num1 >> num2;
+
+    OrdenarDosNumeros(num1, num2);
+
+    cout << "Orden ascendente: "
+        << num1 << " , " << num2 << endl;
+
+    // Segunda prueba
+    num1 = 15;
+    num2 = 8;
+
+    OrdenarDosNumeros(num1, num2);
+
+    cout << "Segunda prueba: "
+        << num1 << " , " << num2 << endl;
+
+    // Tercera prueba
+    num1 = 3;
+    num2 = 20;
+
+    OrdenarDosNumeros(num1, num2);
+
+    cout << "Tercera prueba: "
+        << num1 << " , " << num2 << endl;
+
+    return 0;
+}
