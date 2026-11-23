@@ -1,7 +1,37 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="Problema_1.0/Problema_1.0.vcxproj" />
-</Solution>
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    double ventas[15];
+    double total = 0;
+    double promedio;
+    int contador = 0;
+
+    // Capturar las ventas
+    for (int i = 0; i < 15; i++) {
+        cout << "Ingresa la venta del dia "
+            << i + 1 << ": ";
+        cin >> ventas[i];
+
+        total += ventas[i];
+    }
+
+    // Calcular promedio
+    promedio = total / 15;
+
+    // Contar dias superiores al promedio
+    for (int i = 0; i < 15; i++) {
+        if (ventas[i] > promedio) {
+            contador++;
+        }
+    }
+
+    // Mostrar resultados
+    cout << "\nTotal de ventas: " << total;
+    cout << "\nPromedio diario: " << promedio;
+    cout << "\nDias superiores al promedio: "
+        << contador;
+
+    return 0;
+}
